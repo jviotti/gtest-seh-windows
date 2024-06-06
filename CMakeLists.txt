@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.22)
+project(example VERSION 1.0.0 LANGUAGES CXX)
+set(BUILD_GMOCK OFF CACHE BOOL "disable googlemock")
+add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/googletest")
+enable_testing()
+add_executable(example test.cc)
+target_link_libraries(example PRIVATE GTest::gtest)
+add_test(NAME Example COMMAND example)
